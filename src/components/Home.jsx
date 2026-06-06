@@ -379,6 +379,9 @@ export default function Home({ navigate }) {
 
       {/* ── POPULAR SKIN ── */}
       <section className="section section--alt">
+        <div className="alt-ring" aria-hidden="true" />
+        <div className="alt-ring2" aria-hidden="true" />
+        <div className="alt-cross" aria-hidden="true" />
         <div className="container">
           <div className="text-center reveal" style={{ marginBottom: 52 }}>
             <p className="eyebrow">Top Skin Solutions at GloSkin Tiruvannamalai</p>
