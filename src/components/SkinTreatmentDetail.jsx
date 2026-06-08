@@ -449,8 +449,13 @@ export default function SkinTreatmentDetail({ slug, navigate }) {
   useScrollReveal()
   const t = TREATMENTS[slug]
 
-  if (!t) {
+  function backToServices() {
+    sessionStorage.setItem('grohair_services_tab', 'skin')
     navigate('services')
+  }
+
+  if (!t) {
+    backToServices()
     return null
   }
 
@@ -462,7 +467,7 @@ export default function SkinTreatmentDetail({ slug, navigate }) {
       {/* Breadcrumb */}
       <div className="st-breadcrumb">
         <div className="container">
-          <button className="st-back-btn" onClick={() => navigate('services')}>
+          <button className="st-back-btn" onClick={backToServices}>
             <ChevronLeft size={16} />
             Back to Services
           </button>
@@ -635,7 +640,7 @@ export default function SkinTreatmentDetail({ slug, navigate }) {
                 Book Your Consultation Today
                 <ArrowRight size={16} />
               </button>
-              <button className="btn btn-secondary" onClick={() => navigate('services')}>
+              <button className="btn btn-secondary" onClick={backToServices}>
                 View All Treatments
               </button>
             </div>

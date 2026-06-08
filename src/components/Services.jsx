@@ -93,7 +93,11 @@ const SKIN = [
 
 export default function Services({ navigate }) {
   useScrollReveal()
-  const [tab, setTab] = useState('all')
+  const [tab, setTab] = useState(() => {
+    const saved = sessionStorage.getItem('grohair_services_tab')
+    if (saved) { sessionStorage.removeItem('grohair_services_tab'); return saved }
+    return 'all'
+  })
 
   return (
     <main>
