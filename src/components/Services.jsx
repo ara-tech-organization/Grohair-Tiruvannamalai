@@ -134,7 +134,7 @@ export default function Services({ navigate }) {
 
           <div className="tgrid">
             {items.map((t, i) => (
-              <div key={t.title + tab} className={`tgrid-card reveal d${(i % 4) + 1}`}>
+              <div key={t.title + tab} className={`tgrid-card d${(i % 4) + 1}`}>
                 <div className="tgrid-img-wrap">
                   <img src={t.img} alt={t.title} className="tgrid-img" />
                 </div>
