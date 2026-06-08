@@ -486,7 +486,7 @@ input, textarea { font-family: inherit; }
 .footer::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(0,0,0,.03) 1px,transparent 1px);background-size:24px 24px}
 .footer::after{content:'';position:absolute;bottom:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 65%);border-radius:50%;filter:blur(60px);pointer-events:none;animation:orbDrift2 16s ease-in-out infinite}
 .footer__top{display:grid;grid-template-columns:1.8fr 1fr 1.4fr 1.3fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(0,0,0,.1);margin-bottom:32px;position:relative;z-index:1}
-.footer__logo-img{height:64px;width:auto;filter:brightness(0) saturate(100%) invert(13%) sepia(97%) saturate(4000%) hue-rotate(348deg) brightness(98%) contrast(100%)}
+.footer__logo-img{height:64px;width:auto}
 .footer__brand-tagline{font-size:13.5px;color:rgba(0,0,0,.6);line-height:1.68;margin-top:14px;max-width:280px}
 .footer__badges{display:flex;gap:8px;margin-top:20px}
 .footer__badge{background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.12);border-radius:var(--radius-full);padding:4px 14px;font-size:12px;font-weight:600;color:#a30916;transition:var(--transition)}
