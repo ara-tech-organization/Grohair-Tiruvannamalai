@@ -1,6 +1,8 @@
 import { Scissors, Sparkles, ArrowRight, Check } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+const BASE = '/Grohair-Tiruvannamalai'
 
 import glutaImg    from '../assets/treatments/glutathioneiv.webp'
 import stemXImg    from '../assets/treatments/stem-x-pro.webp'
@@ -94,10 +96,21 @@ const SKIN = [
 export default function Services({ navigate }) {
   useScrollReveal()
   const [tab, setTab] = useState(() => {
+    const path = window.location.pathname
+    if (path.includes('/Services/hair-treatment') && !path.includes('/hair-treatment/')) return 'hair'
+    if (path.includes('/Skin-treatment') && !path.includes('/Skin-treatment/')) return 'skin'
     const saved = sessionStorage.getItem('grohair_services_tab')
     if (saved) { sessionStorage.removeItem('grohair_services_tab'); return saved }
     return 'all'
   })
+
+  useEffect(() => {
+    let url
+    if (tab === 'hair') url = BASE + '/Services/hair-treatment'
+    else if (tab === 'skin') url = BASE + '/Skin-treatment'
+    else url = BASE + '/Services'
+    window.history.replaceState({ page: 'services', tab }, '', url)
+  }, [tab])
 
   return (
     <main>
