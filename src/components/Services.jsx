@@ -159,7 +159,7 @@ export default function Services({ navigate }) {
           {(tab === 'all' || tab === 'hair') && (
             <>
               {tab === 'all' && (
-                <div className="svc-section-header reveal">
+                <div className="svc-section-header">
                   <div className="svc-section-header__line" />
                   <span className="svc-section-header__label">
                     <Scissors size={14} /> Hair Treatments
@@ -171,7 +171,7 @@ export default function Services({ navigate }) {
                 {HAIR.map((t, i) => (
                   <div
                     key={t.slug}
-                    className={`ht-svc-card reveal d${(i % 3) + 1}`}
+                    className={`ht-svc-card d${(i % 3) + 1}`}
                     onClick={() => navigate(`ht:${t.slug}`)}
                     role="button"
                     tabIndex={0}
@@ -203,7 +203,7 @@ export default function Services({ navigate }) {
           {(tab === 'all' || tab === 'skin') && (
             <>
               {tab === 'all' && (
-                <div className="svc-section-header reveal" style={{ marginTop: '60px' }}>
+                <div className="svc-section-header" style={{ marginTop: '60px' }}>
                   <div className="svc-section-header__line" />
                   <span className="svc-section-header__label">
                     <Sparkles size={14} /> Skin Treatments
@@ -215,7 +215,7 @@ export default function Services({ navigate }) {
                 {SKIN.map((t, i) => (
                   <div
                     key={t.slug}
-                    className={`ht-svc-card reveal d${(i % 3) + 1}`}
+                    className={`ht-svc-card d${(i % 3) + 1}`}
                     onClick={() => navigate(`st:${t.slug}`)}
                     role="button"
                     tabIndex={0}
