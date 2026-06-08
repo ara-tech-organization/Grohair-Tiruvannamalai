@@ -1,24 +1,19 @@
-import { useState } from 'react'
-import { Scissors, Sparkles } from 'lucide-react'
+import { Scissors, Sparkles, ArrowRight, Check } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { useState } from 'react'
 
-import hairTxImg      from '../assets/treatments/basic-hair-transplant-fue.webp'
-import capImg         from '../assets/treatments/celebrity-choice.webp'
-import oltImg         from '../assets/treatments/olt.webp'
-import mesoImg        from '../assets/treatments/mesotherapy.webp'
-import regenImg       from '../assets/treatments/regenpro9.webp'
-import stemXImg       from '../assets/treatments/stem-x-pro.webp'
-import prpImg         from '../assets/treatments/prp.webp'
-import smpImg         from '../assets/treatments/smp.webp'
-import beardImg       from '../assets/treatments/beard-transplant.webp'
-import eyebrowImg     from '../assets/treatments/eyebrow-transplant.webp'
-import hairExtImg     from '../assets/treatments/hair-extension.webp'
-import lashImg        from '../assets/treatments/eyelash-extensions.webp'
-import microbladingImg from '../assets/treatments/microblading.webp'
+import glutaImg    from '../assets/treatments/glutathioneiv.webp'
+import stemXImg    from '../assets/treatments/stem-x-pro.webp'
+import hairTxImg   from '../assets/treatments/basic-hair-transplant-fue.webp'
+import regenImg    from '../assets/treatments/regenpro9.webp'
+import prpImg      from '../assets/treatments/prp.webp'
+import oltImg      from '../assets/treatments/olt.webp'
+import capImg      from '../assets/treatments/celebrity-choice.webp'
+import beardImg    from '../assets/treatments/beard-transplant.webp'
+
 import skinPeelsImg   from '../assets/treatments/skin-peels.webp'
 import qswitchImg     from '../assets/treatments/q-switched-lasers.webp'
 import diodeImg       from '../assets/treatments/diode-laser.webp'
-import glutaImg       from '../assets/treatments/glutathioneiv.webp'
 import fillersImg     from '../assets/treatments/dermal-fillers.webp'
 import hydrafacialImg from '../assets/treatments/hydrafacial.webp'
 import facePrpImg     from '../assets/treatments/face-prp.webp'
@@ -28,56 +23,85 @@ import lipImg         from '../assets/treatments/lip-micropigmentation.webp'
 import wartImg        from '../assets/treatments/wart-removal.webp'
 
 const HAIR = [
-  { img: hairTxImg,      title: 'Hair Transplant',       desc: 'Permanent, natural-looking hair restoration using your own follicles. Refined FUE techniques for dense, undetectable results.' },
-  { img: capImg,         title: 'Cosmetic Hair System',  desc: 'A non-surgical route to instant volume and coverage. Custom-fitted, breathable systems designed to look and feel like your own hair.' },
-  { img: oltImg,         title: 'Oxygen Laser Therapy',  desc: 'A scalp-rejuvenating session that pairs oxygenation with low-level laser light to revive follicles and support healthier growth.' },
-  { img: mesoImg,        title: 'Mesotherapy',           desc: 'A minimally invasive scalp treatment delivering vitamins, peptides, and growth factors to strengthen roots and reduce hair fall.' },
-  { img: regenImg,       title: 'Regen Pro 9',           desc: 'An advanced regenerative protocol combining nine targeted growth factors to reactivate dormant follicles and accelerate visible regrowth.' },
-  { img: stemXImg,       title: 'Stem X 27',             desc: 'A 27-factor stem-cell-derived therapy that nourishes the scalp at a cellular level — ideal for early thinning and chronic shedding.' },
-  { img: prpImg,         title: 'PRP',                   desc: 'Platelet-rich plasma drawn from your own blood, processed and reintroduced into the scalp to stimulate natural growth and improve density.' },
-  { img: smpImg,         title: 'Scalp Micropigmentation', desc: 'A precision pigmentation technique that mimics the look of a fuller hairline — ideal for thinning crowns, scar camouflage, and clean buzz looks.' },
-  { img: beardImg,       title: 'Beard Transplant',      desc: 'Sculpt a fuller, well-defined beard with permanent follicle transfer, designed to suit your facial proportions.' },
-  { img: eyebrowImg,     title: 'Eyebrow Transplant',    desc: 'Restore sparse or over-plucked brows using advanced follicle techniques — permanent, natural-looking results.' },
-  { img: hairExtImg,     title: 'Hair Extension',        desc: 'High-grade extensions for instant length and volume, fitted by trained stylists to blend seamlessly with your natural hair.' },
-  { img: lashImg,        title: 'Eye Lash Lifting',      desc: 'A gentle lift and curl that opens up the eyes for weeks at a time. No daily curling, no extensions — just elevated natural lashes.' },
-  { img: microbladingImg, title: 'Microblading',         desc: 'A semi-permanent technique that crafts naturally fuller, hair-stroke brows — tailored shape, color, and density for an effortless look.' },
+  {
+    slug: 'glutathione',
+    img: glutaImg,
+    title: 'Glutathione IV Drip Therapy',
+    desc: 'Advanced wellness and skin rejuvenation treatment delivering the body\'s "Master Antioxidant" directly into the bloodstream for maximum absorption, enhanced glow, and detoxification support.',
+  },
+  {
+    slug: 'gcell',
+    img: stemXImg,
+    title: 'G Cell Therapy',
+    desc: 'Growth-factor-rich cellular technology that stimulates dormant hair follicles, reduces hair fall, improves scalp health, and promotes natural hair regrowth without surgery.',
+  },
+  {
+    slug: 'hybrid',
+    img: hairTxImg,
+    title: 'Hybrid Hair Transplant',
+    desc: 'Modern FUE technology combined with enhanced graft implantation techniques for superior hair density, natural hairline design, and permanent long-lasting results.',
+  },
+  {
+    slug: 'regen-pro9',
+    img: regenImg,
+    title: 'Regen Pro 9 GFC',
+    desc: 'Highly concentrated growth factors derived from your own blood that stimulate dormant follicles, promote healthier hair growth, and improve scalp health naturally.',
+  },
+  {
+    slug: 'gel-prp',
+    img: prpImg,
+    title: 'Advanced Gel PRP',
+    desc: 'PRP therapy with a specialized gel matrix for prolonged growth factor release, stimulating hair regrowth, improving scalp health, and reducing hair fall effectively.',
+  },
+  {
+    slug: 'oxygen-laser',
+    img: oltImg,
+    title: 'Oxygen Laser Therapy',
+    desc: 'Non-invasive oxygen-powered laser technology that stimulates blood circulation, controls dandruff, reduces hair fall, and promotes natural hair growth for a healthier scalp.',
+  },
+  {
+    slug: 'cosmetic-hair',
+    img: capImg,
+    title: 'Cosmetic Hair System',
+    desc: 'A non-surgical solution for hair thinning or baldness. Customized to match your hair color, texture, and style for immediate, natural-looking results — painless and instant.',
+  },
+  {
+    slug: 'prp-stemx27',
+    img: stemXImg,
+    title: 'PRP Pro+ StemX27',
+    desc: 'Platelet-rich plasma enhanced with StemX27 growth factor technology to stimulate dormant follicles, strengthen roots, and promote natural hair regrowth with lasting results.',
+  },
+  {
+    slug: 'beard',
+    img: beardImg,
+    title: 'Beard Transplant',
+    desc: 'Permanent facial hair enhancement using your own follicles. Fills patchy areas, defines beard shape, and creates a full, natural-looking beard with lasting results.',
+  },
 ]
 
 const SKIN = [
-  { img: skinPeelsImg,   title: 'Skin Peels',            desc: 'Medical-grade chemical peels that gently resurface, brighten, and refine the skin. Customized strength for acne, pigmentation, or dullness.' },
-  { img: qswitchImg,     title: 'Q-Switch Laser',        desc: 'Precision laser energy that targets deep pigmentation, melasma, and stubborn dark spots. Safe for all skin types with minimal downtime.' },
-  { img: diodeImg,       title: 'Laser Hair Reduction',  desc: 'Long-lasting, comfortable hair reduction across the face and body using next-generation lasers calibrated to your skin tone and hair type.' },
-  { img: glutaImg,       title: 'Glutathione IV',        desc: 'A wellness-grade IV protocol designed to support skin clarity, even tone, and antioxidant balance — beauty supported from the inside out.' },
-  { img: fillersImg,     title: 'Derma Fillers',         desc: 'Hyaluronic-acid fillers used to refine contours, restore lost volume, and gently re-balance facial proportions for a natural finish.' },
-  { img: hydrafacialImg, title: 'HydraFacial',           desc: 'A multi-step facial that cleanses, exfoliates, and deeply hydrates the skin — ideal for instantly improved texture, hydration, and clarity.' },
-  { img: facePrpImg,     title: 'Face PRP',              desc: 'Your own platelet-rich plasma applied to the skin to support natural collagen, smoother tone, and a refreshed, lit-from-within glow.' },
-  { img: cosmelanImg,    title: 'Cosmelan Peel',         desc: 'A globally recognized depigmenting protocol designed to fade stubborn melasma and uneven tone with measured, lasting results.' },
-  { img: mnrfImg,        title: 'MNRF',                  desc: 'Microneedling Radiofrequency that combines micro-channels with controlled RF energy to firm skin, refine pores, and soften scars.' },
-  { img: lipImg,         title: 'Lip Micropigmentation', desc: 'Subtle pigment placement to enhance the natural color and definition of the lips — soft, fresh, and beautifully understated.' },
-  { img: wartImg,        title: 'Wart Removal',          desc: 'Quick, precise removal of warts and skin tags using safe clinical methods — minimal scarring and rapid recovery.' },
-]
-
-const ALL = [
-  ...HAIR.map(t => ({ ...t, type: 'hair' })),
-  ...SKIN.map(t => ({ ...t, type: 'skin' })),
+  { slug: 'glutalite',          img: glutaImg,       title: 'Glutalite IV Drip Treatment',      desc: 'Nutrient-rich IV infusion with Glutathione, Vitamin C, and essential nutrients to brighten skin, reduce pigmentation, combat oxidative stress, and support whole-body detoxification.' },
+  { slug: 'chemical-peel',      img: cosmelanImg,    title: 'Chemical Peel Treatments',         desc: 'Medical-grade chemical peels that resurface skin, reduce pigmentation, minimize acne scars, and reveal smoother, brighter, and healthier skin.' },
+  { slug: 'photo-carbon',       img: qswitchImg,     title: 'Photo Carbon Skin Polish',         desc: 'Activated carbon combined with laser energy to deeply cleanse, reduce pigmentation, minimize pores, and restore a radiant, rejuvenated complexion.' },
+  { slug: 'laser-hair-reduction', img: diodeImg,     title: 'Laser Hair Reduction',             desc: 'Advanced laser technology that safely targets hair follicles for long-term hair reduction on the face and body — smooth, confident skin with minimal maintenance.' },
+  { slug: 'hydra-lift',         img: hydrafacialImg, title: 'Hydra Lift Skin Booster',          desc: 'Powerful skin-enhancing nutrients delivered deep into the skin to hydrate, boost collagen, improve elasticity, and restore a youthful, radiant glow.' },
+  { slug: 'lip-micropigmentation', img: lipImg,      title: 'Lip Micropigmentation',            desc: 'Semi-permanent cosmetic procedure that enhances lip shape, color, and symmetry — creating naturally fuller, beautifully defined, and youthful-looking lips.' },
+  { slug: 'botox-fillers',      img: fillersImg,     title: 'Botox & Fillers',                  desc: 'Botox and dermal fillers that reduce wrinkles, restore facial volume, and enhance contours for a refreshed, naturally youthful appearance without surgery.' },
+  { slug: 'mnrf',               img: mnrfImg,        title: 'MNRF Treatment',                   desc: 'Microneedling Radiofrequency combining precise microchannels with RF energy to stimulate collagen, tighten skin, reduce acne scars, and minimize enlarged pores.' },
+  { slug: 'tattoo-removal',     img: wartImg,        title: 'Tattoo Removal',                   desc: 'Advanced laser technology that targets tattoo pigments beneath the skin without harming surrounding tissue — safe, gradual, and effective removal for all colors.' },
 ]
 
 export default function Services({ navigate }) {
   useScrollReveal()
   const [tab, setTab] = useState('all')
 
-  const items = tab === 'all' ? ALL : tab === 'hair' ? HAIR.map(t => ({ ...t, type: 'hair' })) : SKIN.map(t => ({ ...t, type: 'skin' }))
-
   return (
     <main>
 
-      {/* ── PAGE HERO ── */}
+      {/* Hero */}
       <section className="sh3-hero">
-        {/* bg image with overlay */}
-        <div className="sh3-hero__bg" style={{backgroundImage:`url(${hairTxImg})`}} />
+        <div className="sh3-hero__bg" style={{ backgroundImage: `url(${hairTxImg})` }} />
         <div className="sh3-hero__overlay" />
-
-        {/* floating orb */}
         <div className="sh3-hero__orb" aria-hidden="true" />
 
         <div className="container sh3-hero__body">
@@ -97,12 +121,11 @@ export default function Services({ navigate }) {
           </div>
         </div>
 
-        {/* image strip */}
         <div className="sh3-hero__strip">
           {[
             { img: hairTxImg,    label: 'Hair Transplant' },
-            { img: mesoImg,      label: 'Mesotherapy' },
-            { img: prpImg,       label: 'PRP Therapy' },
+            { img: regenImg,     label: 'Regen Pro 9 GFC' },
+            { img: prpImg,       label: 'Gel PRP' },
             { img: hydrafacialImg, label: 'HydraFacial' },
             { img: qswitchImg,   label: 'Q-Switch Laser' },
             { img: skinPeelsImg, label: 'Skin Peels' },
@@ -116,7 +139,7 @@ export default function Services({ navigate }) {
         </div>
       </section>
 
-      {/* ── TREATMENTS ── */}
+      {/* Filter tabs */}
       <section className="section">
         <div className="container">
 
@@ -132,27 +155,117 @@ export default function Services({ navigate }) {
             </button>
           </div>
 
-          <div className="tgrid">
-            {items.map((t, i) => (
-              <div key={t.title + tab} className={`tgrid-card d${(i % 4) + 1}`}>
-                <div className="tgrid-img-wrap">
-                  <img src={t.img} alt={t.title} className="tgrid-img" />
-                </div>
-                <div className="tgrid-content">
-                  <h3 className="tgrid-title">{t.title}</h3>
-                  <p className="tgrid-desc">{t.desc}</p>
-                  <span className={`tgrid-badge tgrid-badge--${t.type}`}>
-                    {t.type === 'hair' ? <Scissors size={10} /> : <Sparkles size={10} />}
-                    &nbsp;{t.type.charAt(0).toUpperCase() + t.type.slice(1)}
+          {/* Hair treatment cards */}
+          {(tab === 'all' || tab === 'hair') && (
+            <>
+              {tab === 'all' && (
+                <div className="svc-section-header reveal">
+                  <div className="svc-section-header__line" />
+                  <span className="svc-section-header__label">
+                    <Scissors size={14} /> Hair Treatments
                   </span>
+                  <div className="svc-section-header__line" />
                 </div>
+              )}
+              <div className="ht-card-grid">
+                {HAIR.map((t, i) => (
+                  <div
+                    key={t.slug}
+                    className={`ht-svc-card reveal d${(i % 3) + 1}`}
+                    onClick={() => navigate(`ht:${t.slug}`)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={e => e.key === 'Enter' && navigate(`ht:${t.slug}`)}
+                  >
+                    <div className="ht-svc-card__img-wrap">
+                      <img src={t.img} alt={t.title} className="ht-svc-card__img" />
+                      <span className="ht-svc-card__badge">
+                        <Scissors size={10} /> Hair
+                      </span>
+                    </div>
+                    <div className="ht-svc-card__body">
+                      <h3 className="ht-svc-card__title">{t.title}</h3>
+                      <p className="ht-svc-card__desc">{t.desc}</p>
+                      <button
+                        className="ht-svc-card__cta"
+                        onClick={e => { e.stopPropagation(); navigate(`ht:${t.slug}`) }}
+                      >
+                        View Treatment <ArrowRight size={14} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </>
+          )}
+
+          {/* Skin treatment cards */}
+          {(tab === 'all' || tab === 'skin') && (
+            <>
+              {tab === 'all' && (
+                <div className="svc-section-header reveal" style={{ marginTop: '60px' }}>
+                  <div className="svc-section-header__line" />
+                  <span className="svc-section-header__label">
+                    <Sparkles size={14} /> Skin Treatments
+                  </span>
+                  <div className="svc-section-header__line" />
+                </div>
+              )}
+              <div className="ht-card-grid">
+                {SKIN.map((t, i) => (
+                  <div
+                    key={t.slug}
+                    className={`ht-svc-card reveal d${(i % 3) + 1}`}
+                    onClick={() => navigate(`st:${t.slug}`)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={e => e.key === 'Enter' && navigate(`st:${t.slug}`)}
+                  >
+                    <div className="ht-svc-card__img-wrap">
+                      <img src={t.img} alt={t.title} className="ht-svc-card__img" />
+                      <span className="ht-svc-card__badge ht-svc-card__badge--skin">
+                        <Sparkles size={10} /> Skin
+                      </span>
+                    </div>
+                    <div className="ht-svc-card__body">
+                      <h3 className="ht-svc-card__title">{t.title}</h3>
+                      <p className="ht-svc-card__desc">{t.desc}</p>
+                      <button
+                        className="ht-svc-card__cta"
+                        onClick={e => { e.stopPropagation(); navigate(`st:${t.slug}`) }}
+                      >
+                        View Treatment <ArrowRight size={14} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
 
         </div>
       </section>
 
+      {/* CTA strip */}
+      <section className="home-cta">
+        <div className="container">
+          <p className="home-cta__eyebrow">Ready to Begin?</p>
+          <h2 className="home-cta__title">
+            Book Your <span>Consultation</span> Today
+          </h2>
+          <p className="home-cta__sub">
+            Our specialists are ready to create a personalized treatment plan tailored to your goals and lifestyle.
+          </p>
+          <div className="home-cta__actions">
+            <button className="btn btn-primary" onClick={() => navigate('contact')}>
+              Book An Appointment <ArrowRight size={16} />
+            </button>
+            <button className="btn btn-secondary" onClick={() => navigate('about')}>
+              About the Clinic
+            </button>
+          </div>
+        </div>
+      </section>
 
     </main>
   )
