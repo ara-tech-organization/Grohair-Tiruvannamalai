@@ -626,16 +626,16 @@ export default function SkinTreatmentDetail({ slug, navigate }) {
         <div className="container">
           <div className="st-cta__inner reveal">
             <div className="st-cta__content">
-              <p className="eyebrow" style={{ color: 'rgba(255,255,255,.7)' }}>Get Started</p>
+              <p className="eyebrow">Get Started</p>
               <h2 className="st-cta__title">{t.ctaTitle}</h2>
               <p className="st-cta__desc">{t.ctaDesc}</p>
             </div>
             <div className="st-cta__actions">
-              <button className="btn btn-white" onClick={() => navigate('contact')}>
+              <button className="btn btn-primary" onClick={() => navigate('contact')}>
                 Book Your Consultation Today
                 <ArrowRight size={16} />
               </button>
-              <button className="btn btn-outline-white" onClick={() => navigate('services')}>
+              <button className="btn btn-secondary" onClick={() => navigate('services')}>
                 View All Treatments
               </button>
             </div>
