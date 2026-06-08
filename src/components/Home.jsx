@@ -5,14 +5,14 @@ import {
 } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
-import heroBg         from '../assets/treatments/hero.webp'
-import skinPeelsImg   from '../assets/treatments/skin-peels.webp'
-import qswitchImg     from '../assets/treatments/q-switched-lasers.webp'
-import hydrafacialImg from '../assets/treatments/hydrafacial.webp'
-import hairTxImg      from '../assets/treatments/basic-hair-transplant-fue.webp'
-import mesoImg        from '../assets/treatments/mesotherapy.webp'
-import stemXImg       from '../assets/treatments/stem-x-pro.webp'
-import prpImg         from '../assets/treatments/prp.webp'
+import heroBg         from '../assets/treatments/hybrid-hair-transplant.jpg'
+import skinPeelsImg   from '../assets/treatments/chemical-peel.jpg'
+import qswitchImg     from '../assets/treatments/photo-carbon.png'
+import hydrafacialImg from '../assets/treatments/hydra-lift.jpg'
+import hairTxImg      from '../assets/treatments/hybrid-hair-transplant.jpg'
+import mesoImg        from '../assets/treatments/gcell.jpg'
+import stemXImg       from '../assets/treatments/prp-stemx27.png'
+import prpImg         from '../assets/treatments/gel-prp.jpg'
 
 const FEATURES = [
   {
@@ -78,19 +78,19 @@ const HAIR_POP = [
 ]
 
 const TESTIMONIALS_ROW1 = [
-  { quote: "Never thought I'd love my skin this much. Every session was pure magic — the glow is real.", name: 'Sneha R.', role: 'GloSkin client', initials: 'SR' },
-  { quote: 'Professional, clean, and deeply caring. Tiruvannamalai needed a place like this. Blessings!', name: 'Bhavik K.', role: 'GroHair client', initials: 'BK' },
-  { quote: 'Doctor explained every detail with patience. My acne is gone and my confidence is back.', name: 'Meera L.', role: 'Acne care patient', initials: 'ML' },
-  { quote: 'From bald spots to full locks — what a transformation! Truly life-changing care.', name: 'Harish V.', role: 'Hair restoration patient', initials: 'HV' },
-  { quote: 'The PRP sessions genuinely stopped my shedding. Staff are friendly and the place feels premium.', name: 'Karthik S.', role: 'PRP patient', initials: 'KS' },
+  { quote: 'They listened to all the questions with great patience and explained everything clearly. The information about transplant and hair growth was explained very well.', name: 'Syed Amjath', role: 'Hair Treatment Patient', initials: 'SA' },
+  { quote: 'I visited for dandruff treatment. After taking the treatment, my dandruff reduced significantly. I got good results, and the consultation was also very good.', name: 'Vendhan Keerthi', role: 'Dandruff Treatment', initials: 'VK' },
+  { quote: 'Dr. Gajapriya consultation very useful regarding skin concern. The staff were professional and made me feel comfortable throughout.', name: 'Style Salman', role: 'Skin Consultation', initials: 'SS' },
+  { quote: 'Started my GFC + OLT hair treatment and the results have been impressive. Genuine products and clear guidance. Dr. Gajapriya and the team are professional and truly care about your progress.', name: 'Nirmal Nirpro', role: 'GFC + OLT Treatment', initials: 'NN' },
+  { quote: 'Today CHS service done by Palani. It was super, excellently done. Great experience. Highly satisfied. Thanks for the service.', name: 'Arun Kumar', role: 'CHS Service', initials: 'AK' },
 ]
 
 const TESTIMONIALS_ROW2 = [
-  { quote: 'HydraFacial was incredible — my skin was glowing for days. Already booked my next session!', name: 'Priya M.', role: 'HydraFacial client', initials: 'PM' },
-  { quote: 'Finally a clinic that truly listens. The hair transplant result is completely natural.', name: 'Ramesh T.', role: 'Hair transplant patient', initials: 'RT' },
-  { quote: 'Q-Switch laser cleared my pigmentation in just four sessions. Highly recommend this clinic!', name: 'Divya N.', role: 'Pigmentation care', initials: 'DN' },
-  { quote: 'Mesotherapy gave my hair new life. Very professional team and painless experience.', name: 'Arun P.', role: 'Mesotherapy patient', initials: 'AP' },
-  { quote: 'Stem X 27 exceeded my expectations. Hair density improved noticeably within two months.', name: 'Lalitha K.', role: 'Stem X patient', initials: 'LK' },
+  { quote: 'Dr. Gajapriya, the Consultant discussed a lot of things regarding hair issues. She took special care and rendered good service. Christella, the receptionist with her kind words made the journey smooth.', name: 'Priya Venkat', role: 'Hair Consultation', initials: 'PV' },
+  { quote: 'Skin consultation by Dr. Gajapriya is very comfortable for me and here Christella treated us friendly — very useful for me to convey my issues. The treatment is very good here!', name: 'R. Rahul', role: 'Skin Consultation', initials: 'RR' },
+  { quote: 'I visited the At-Work Clinic for a skin consultation and had a really good experience. The doctor gave clear and informative advice about skincare. Overall a very positive and helpful consultation. Highly recommended!', name: 'Samyuktha Sam', role: 'Skin Consultation', initials: 'SS' },
+  { quote: 'I had a great experience at Grohair & Gloskin — friendly staffs who are very knowledgeable persons. Good way of explanation. One of the best hair clinics in Tiruvannamalai.', name: 'Sivalingam Chinnappa', role: 'Hair Treatment', initials: 'SC' },
+  { quote: 'Had a great session with the doctor today! The treatment for hair growth was clearly explained and gave me a lot of confidence.', name: 'Mano', role: 'Hair Growth Treatment', initials: 'MA' },
 ]
 
 const TRUST_ITEMS = [
@@ -289,7 +289,7 @@ export default function Home({ navigate }) {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 24 }}>
+          <div className="home-feat-grid">
             {FEATURES.map((f, i) => (
               <div key={f.title} className={`feature-card feature-card--img reveal d${i + 1}`}>
                 <div className="feature-card__img-wrap">
@@ -321,7 +321,7 @@ export default function Home({ navigate }) {
               care — paired with advanced technology for results that are not just visible,
               but long-lasting.
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 14, marginTop: 28 }}>
+            <div className="home-svc-actions">
               <button className="btn btn-primary" onClick={() => navigate('services')}>
                 Explore all treatments
               </button>
@@ -455,51 +455,52 @@ export default function Home({ navigate }) {
       </section>
 
       {/* ── STATS ── */}
-      <section className="stats-section">
+      <section className="abt-nums">
         <div className="container">
-          <div className="stats-layout">
 
-            {/* Left — content */}
-            <div className="reveal-left">
-              <p className="eyebrow">Why we're trusted</p>
-              <div className="gold-bar" />
-              <h2 className="section-title">
-                Why Tiruvannamalai<br />Clients Trust Us
-              </h2>
-              <p className="section-sub" style={{ marginBottom: 32 }}>
-                Advanced equipment, certified specialists, and a client-first approach —
-                every visit to our clinic is designed around your comfort and results.
-              </p>
-              <button className="btn btn-primary" onClick={() => navigate('contact')}>
-                Book a Consultation
-              </button>
-            </div>
-
-            {/* Right — 2×2 stat cards */}
-            <div className="stats-cards">
-              <div className="stat-item reveal d1">
-                <div className="stat-icon"><Users size={22} /></div>
-                <div className="stat-num"><CountUp end={1000} suffix="+" /></div>
-                <div className="stat-label">Happy Clients</div>
-              </div>
-              <div className="stat-item reveal d2">
-                <div className="stat-icon"><Stethoscope size={22} /></div>
-                <div className="stat-num"><CountUp end={10} suffix="+" /></div>
-                <div className="stat-label">Experienced Specialists</div>
-              </div>
-              <div className="stat-item reveal d3">
-                <div className="stat-icon"><Zap size={22} /></div>
-                <div className="stat-num"><CountUp end={20} suffix="+" /></div>
-                <div className="stat-label">Advanced Technologies</div>
-              </div>
-              <div className="stat-item reveal d4">
-                <div className="stat-icon"><Star size={22} /></div>
-                <div className="stat-num"><CountUp end={99} suffix="%" /></div>
-                <div className="stat-label">Client Satisfaction</div>
-              </div>
-            </div>
-
+          <div className="abt-nums__head text-center reveal">
+            <p className="eyebrow">Our Numbers</p>
+            <div className="gold-bar" style={{ margin: '10px auto 20px' }} />
+            <h2 className="section-title">Results That <span>Speak</span> for Themselves</h2>
+            <p className="section-sub">
+              Advanced equipment, certified specialists, and a client-first approach —
+              every visit to our clinic is designed around your comfort and results.
+            </p>
           </div>
+
+          <div className="abt-nums__grid">
+            <div className="abt-nums__item reveal d1">
+              <div className="abt-nums__icon"><Users size={22} /></div>
+              <div className="abt-nums__num"><CountUp end={1000} suffix="+" /></div>
+              <div className="abt-nums__label">Happy Clients</div>
+              <div className="abt-nums__sub">Across all treatments</div>
+            </div>
+            <div className="abt-nums__item reveal d2">
+              <div className="abt-nums__icon"><Stethoscope size={22} /></div>
+              <div className="abt-nums__num"><CountUp end={10} suffix="+" /></div>
+              <div className="abt-nums__label">Expert Specialists</div>
+              <div className="abt-nums__sub">Certified &amp; experienced</div>
+            </div>
+            <div className="abt-nums__item reveal d3">
+              <div className="abt-nums__icon"><Zap size={22} /></div>
+              <div className="abt-nums__num"><CountUp end={20} suffix="+" /></div>
+              <div className="abt-nums__label">Advanced Technologies</div>
+              <div className="abt-nums__sub">Modern clinical tools</div>
+            </div>
+            <div className="abt-nums__item reveal d4">
+              <div className="abt-nums__icon"><Star size={22} /></div>
+              <div className="abt-nums__num"><CountUp end={99} suffix="%" /></div>
+              <div className="abt-nums__label">Client Satisfaction</div>
+              <div className="abt-nums__sub">Measured every visit</div>
+            </div>
+          </div>
+
+          <div className="abt-nums__cta reveal">
+            <button className="btn btn-primary" onClick={() => navigate('contact')}>
+              Book a Consultation
+            </button>
+          </div>
+
         </div>
       </section>
 

@@ -1,14 +1,15 @@
 import { Check, ChevronLeft, ArrowRight, Clock, Leaf, Zap, Shield } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
-import glutaImg   from '../assets/treatments/glutathioneiv.webp'
-import stemXImg   from '../assets/treatments/stem-x-pro.webp'
-import hairTxImg  from '../assets/treatments/basic-hair-transplant-fue.webp'
-import regenImg   from '../assets/treatments/regenpro9.webp'
-import prpImg     from '../assets/treatments/prp.webp'
-import oltImg     from '../assets/treatments/olt.webp'
-import capImg     from '../assets/treatments/celebrity-choice.webp'
-import beardImg   from '../assets/treatments/beard-transplant.webp'
+import glutaImg    from '../assets/treatments/glutathione-hair.jpg'
+import gcellImg    from '../assets/treatments/gcell.jpg'
+import hairTxImg   from '../assets/treatments/hybrid-hair-transplant.jpg'
+import regenImg    from '../assets/treatments/regen-pro9-new.png'
+import prpImg      from '../assets/treatments/gel-prp.jpg'
+import oltImg      from '../assets/treatments/olt-new.png'
+import capImg      from '../assets/treatments/cosmetic-hair-system.png'
+import prpStemImg  from '../assets/treatments/prp-stemx27.png'
+import beardImg    from '../assets/treatments/beard-transplant-new.png'
 
 const TREATMENTS = {
   glutathione: {
@@ -61,7 +62,7 @@ const TREATMENTS = {
   },
 
   gcell: {
-    img: stemXImg,
+    img: gcellImg,
     eyebrow: 'Advanced Hair Rejuvenation',
     title: 'G Cell Therapy',
     tagline: 'Rediscover Stronger, Thicker, and Healthier Hair',
@@ -344,7 +345,7 @@ const TREATMENTS = {
   },
 
   'prp-stemx27': {
-    img: stemXImg,
+    img: prpStemImg,
     eyebrow: 'Next-Generation Hair Restoration',
     title: 'PRP Pro+ StemX27 Hair Restoration',
     tagline: 'Next-Generation Hair Regrowth Solution',

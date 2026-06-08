@@ -4,36 +4,36 @@ import { useState, useEffect } from 'react'
 
 const BASE = '/Grohair-Tiruvannamalai'
 
-import glutaImg    from '../assets/treatments/glutathioneiv.webp'
-import stemXImg    from '../assets/treatments/stem-x-pro.webp'
-import hairTxImg   from '../assets/treatments/basic-hair-transplant-fue.webp'
-import regenImg    from '../assets/treatments/regenpro9.webp'
-import prpImg      from '../assets/treatments/prp.webp'
-import oltImg      from '../assets/treatments/olt.webp'
-import capImg      from '../assets/treatments/celebrity-choice.webp'
-import beardImg    from '../assets/treatments/beard-transplant.webp'
+import glutaHairImg   from '../assets/treatments/glutathione-hair.jpg'
+import gcellImg       from '../assets/treatments/gcell.jpg'
+import hairTxImg      from '../assets/treatments/hybrid-hair-transplant.jpg'
+import regenImg       from '../assets/treatments/regen-pro9-new.png'
+import prpImg         from '../assets/treatments/gel-prp.jpg'
+import oltImg         from '../assets/treatments/olt-new.png'
+import capImg         from '../assets/treatments/cosmetic-hair-system.png'
+import prpStemImg     from '../assets/treatments/prp-stemx27.png'
+import beardImg       from '../assets/treatments/beard-transplant-new.png'
 
-import skinPeelsImg   from '../assets/treatments/skin-peels.webp'
-import qswitchImg     from '../assets/treatments/q-switched-lasers.webp'
-import diodeImg       from '../assets/treatments/diode-laser.webp'
-import fillersImg     from '../assets/treatments/dermal-fillers.webp'
-import hydrafacialImg from '../assets/treatments/hydrafacial.webp'
-import facePrpImg     from '../assets/treatments/face-prp.webp'
-import cosmelanImg    from '../assets/treatments/cosmelanpeel.webp'
-import mnrfImg        from '../assets/treatments/rf-facials.webp'
-import lipImg         from '../assets/treatments/lip-micropigmentation.webp'
-import wartImg        from '../assets/treatments/wart-removal.webp'
+import glutaSkinImg   from '../assets/treatments/glutalite-iv-drip.jpg'
+import cosmelanImg    from '../assets/treatments/chemical-peel.jpg'
+import qswitchImg     from '../assets/treatments/photo-carbon.png'
+import diodeImg       from '../assets/treatments/laser-hair-reduction.jpg'
+import hydrafacialImg from '../assets/treatments/hydra-lift.jpg'
+import lipImg         from '../assets/treatments/lip-micropigmentation-new.png'
+import fillersImg     from '../assets/treatments/botox-fillers.jpg'
+import mnrfImg        from '../assets/treatments/mnrf.jpg'
+import wartImg        from '../assets/treatments/tattoo-removal.jpg'
 
 const HAIR = [
   {
     slug: 'glutathione',
-    img: glutaImg,
+    img: glutaHairImg,
     title: 'Glutathione IV Drip Therapy',
     desc: 'Advanced wellness and skin rejuvenation treatment delivering the body\'s "Master Antioxidant" directly into the bloodstream for maximum absorption, enhanced glow, and detoxification support.',
   },
   {
     slug: 'gcell',
-    img: stemXImg,
+    img: gcellImg,
     title: 'G Cell Therapy',
     desc: 'Growth-factor-rich cellular technology that stimulates dormant hair follicles, reduces hair fall, improves scalp health, and promotes natural hair regrowth without surgery.',
   },
@@ -69,7 +69,7 @@ const HAIR = [
   },
   {
     slug: 'prp-stemx27',
-    img: stemXImg,
+    img: prpStemImg,
     title: 'PRP Pro+ StemX27',
     desc: 'Platelet-rich plasma enhanced with StemX27 growth factor technology to stimulate dormant follicles, strengthen roots, and promote natural hair regrowth with lasting results.',
   },
@@ -82,7 +82,7 @@ const HAIR = [
 ]
 
 const SKIN = [
-  { slug: 'glutalite',          img: glutaImg,       title: 'Glutalite IV Drip Treatment',      desc: 'Nutrient-rich IV infusion with Glutathione, Vitamin C, and essential nutrients to brighten skin, reduce pigmentation, combat oxidative stress, and support whole-body detoxification.' },
+  { slug: 'glutalite',          img: glutaSkinImg,       title: 'Glutalite IV Drip Treatment',      desc: 'Nutrient-rich IV infusion with Glutathione, Vitamin C, and essential nutrients to brighten skin, reduce pigmentation, combat oxidative stress, and support whole-body detoxification.' },
   { slug: 'chemical-peel',      img: cosmelanImg,    title: 'Chemical Peel Treatments',         desc: 'Medical-grade chemical peels that resurface skin, reduce pigmentation, minimize acne scars, and reveal smoother, brighter, and healthier skin.' },
   { slug: 'photo-carbon',       img: qswitchImg,     title: 'Photo Carbon Skin Polish',         desc: 'Activated carbon combined with laser energy to deeply cleanse, reduce pigmentation, minimize pores, and restore a radiant, rejuvenated complexion.' },
   { slug: 'laser-hair-reduction', img: diodeImg,     title: 'Laser Hair Reduction',             desc: 'Advanced laser technology that safely targets hair follicles for long-term hair reduction on the face and body — smooth, confident skin with minimal maintenance.' },
@@ -143,9 +143,9 @@ export default function Services({ navigate }) {
             { img: hairTxImg,    label: 'Hair Transplant' },
             { img: regenImg,     label: 'Regen Pro 9 GFC' },
             { img: prpImg,       label: 'Gel PRP' },
-            { img: hydrafacialImg, label: 'HydraFacial' },
-            { img: qswitchImg,   label: 'Q-Switch Laser' },
-            { img: skinPeelsImg, label: 'Skin Peels' },
+            { img: hydrafacialImg, label: 'Hydra Lift' },
+            { img: qswitchImg,   label: 'Photo Carbon' },
+            { img: cosmelanImg,  label: 'Chemical Peel' },
           ].map(item => (
             <div key={item.label} className="sh3-hero__strip-item" onClick={() => navigate('contact')}>
               <img src={item.img} alt={item.label} className="sh3-hero__strip-img" />

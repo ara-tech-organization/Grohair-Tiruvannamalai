@@ -1,16 +1,15 @@
 import { ChevronLeft, ArrowRight, Clock, Shield, Check, Droplets, Layers, Zap, Smile, Sparkles, FlaskConical, X } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
-import glutaImg       from '../assets/treatments/glutathioneiv.webp'
-import skinPeelsImg   from '../assets/treatments/skin-peels.webp'
-import cosmelanImg    from '../assets/treatments/cosmelanpeel.webp'
-import qswitchImg     from '../assets/treatments/q-switched-lasers.webp'
-import diodeImg       from '../assets/treatments/diode-laser.webp'
-import hydrafacialImg from '../assets/treatments/hydrafacial.webp'
-import lipImg         from '../assets/treatments/lip-micropigmentation.webp'
-import fillersImg     from '../assets/treatments/dermal-fillers.webp'
-import mnrfImg        from '../assets/treatments/rf-facials.webp'
-import wartImg        from '../assets/treatments/wart-removal.webp'
+import glutaImg       from '../assets/treatments/glutalite-iv-drip.jpg'
+import cosmelanImg    from '../assets/treatments/chemical-peel.jpg'
+import qswitchImg     from '../assets/treatments/photo-carbon.png'
+import diodeImg       from '../assets/treatments/laser-hair-reduction.jpg'
+import hydrafacialImg from '../assets/treatments/hydra-lift.jpg'
+import lipImg         from '../assets/treatments/lip-micropigmentation-new.png'
+import fillersImg     from '../assets/treatments/botox-fillers.jpg'
+import mnrfImg        from '../assets/treatments/mnrf.jpg'
+import wartImg        from '../assets/treatments/tattoo-removal.jpg'
 
 const TREATMENTS = {
   glutalite: {

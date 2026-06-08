@@ -19,46 +19,58 @@ export default function Navbar({ activePage, navigate }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
   function go(id) {
     navigate(id)
     setOpen(false)
   }
 
   return (
-    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
-      <div className="container">
-        <div className="navbar__inner">
-          <button className="navbar__logo" onClick={() => go('home')}>
-            <img src={logoImg} alt="Advanced GroHair & GloSkin" />
-          </button>
+    <>
+      <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+        <div className="container">
+          <div className="navbar__inner">
+            <button className="navbar__logo" onClick={() => go('home')}>
+              <img src={logoImg} alt="Advanced GroHair & GloSkin" />
+            </button>
 
-          <div className={`navbar__links${open ? ' open' : ''}`}>
-            {LINKS.map(l => (
-              <button
-                key={l.id}
-                className={`nav-link${activePage === l.id ? ' active' : ''}`}
-                onClick={() => go(l.id)}
-              >
-                {l.label}
+            <div className={`navbar__links${open ? ' open' : ''}`}>
+              {LINKS.map(l => (
+                <button
+                  key={l.id}
+                  className={`nav-link${activePage === l.id || (l.id === 'services' && activePage.startsWith('ht:')) ? ' active' : ''}`}
+                  onClick={() => go(l.id)}
+                >
+                  {l.label}
+                </button>
+              ))}
+              <button className="nav-mobile-cta btn btn-primary" onClick={() => go('contact')}>
+                Book Appointment
               </button>
-            ))}
-          </div>
+            </div>
 
-          <div className="navbar__cta">
-            <button className="btn btn-primary" onClick={() => go('contact')}>
-              Book Appointment
+            <div className="navbar__cta">
+              <button className="btn btn-primary" onClick={() => go('contact')}>
+                Book Appointment
+              </button>
+            </div>
+
+            <button
+              className="navbar__toggle"
+              onClick={() => setOpen(v => !v)}
+              aria-label="Toggle menu"
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
-
-          <button
-            className="navbar__toggle"
-            onClick={() => setOpen(v => !v)}
-            aria-label="Toggle menu"
-          >
-            {open ? <X size={20} /> : <Menu size={20} />}
-          </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {open && <div className="nav-backdrop" onClick={() => setOpen(false)} />}
+    </>
   )
 }

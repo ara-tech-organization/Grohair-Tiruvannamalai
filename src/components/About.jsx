@@ -31,11 +31,11 @@ function CountUp({ end, suffix = '' }) {
   return <span ref={ref}>{count}{suffix}</span>
 }
 
-import hairTxImg    from '../assets/treatments/basic-hair-transplant-fue.webp'
-import qswitchImg   from '../assets/treatments/q-switched-lasers.webp'
-import skinPeelsImg from '../assets/treatments/skin-peels.webp'
-import regenImg     from '../assets/treatments/regenpro9.webp'
-import mesoImg      from '../assets/treatments/mesotherapy.webp'
+import hairTxImg    from '../assets/treatments/hybrid-hair-transplant.jpg'
+import qswitchImg   from '../assets/treatments/photo-carbon.png'
+import skinPeelsImg from '../assets/treatments/chemical-peel.jpg'
+import regenImg     from '../assets/treatments/regen-pro9-new.png'
+import mesoImg      from '../assets/treatments/gcell.jpg'
 
 const WHY_US = [
   {
@@ -299,17 +299,17 @@ export default function About({ navigate }) {
               for trust — from how we consult to how we deliver every result.
             </p>
           </div>
-          <div className="abt-trust-list">
+          <div className="wt-grid">
             {WHY_US.map((f, i) => (
-              <div key={f.title} className={`abt-trust-row reveal d${i + 1}`}>
-                <div className="abt-trust-row__num">{String(i + 1).padStart(2, '0')}</div>
-                <div className="abt-trust-row__icon"><f.Icon size={22} /></div>
-                <div className="abt-trust-row__content">
-                  <h3 className="abt-trust-row__title">{f.title}</h3>
-                  <p className="abt-trust-row__desc">{f.desc}</p>
-                </div>
-                <div className="abt-trust-row__img">
+              <div key={f.title} className={`wt-card reveal d${i + 1}`}>
+                <div className="wt-card__img">
                   <img src={f.img} alt={f.title} />
+                  <div className="wt-card__num">{String(i + 1).padStart(2, '0')}</div>
+                </div>
+                <div className="wt-card__body">
+                  <div className="wt-card__icon"><f.Icon size={22} /></div>
+                  <h3 className="wt-card__title">{f.title}</h3>
+                  <p className="wt-card__desc">{f.desc}</p>
                 </div>
               </div>
             ))}
