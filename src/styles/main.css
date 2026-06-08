@@ -2511,14 +2511,14 @@ input, textarea { font-family: inherit; }
 /* ══════════════════════════════════════════════════════
    HAIR TREATMENT DETAIL PAGE
 ══════════════════════════════════════════════════════ */
-.ht-breadcrumb{background:#fff;border-bottom:1px solid #f0e0e2;padding:14px 0}
+.ht-breadcrumb{background:#fafbfc;border-bottom:1px solid #f0e0e2;padding:14px 0;margin-top:72px}
 .ht-breadcrumb .container{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .ht-back-btn{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:#ec0a1d;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;transition:gap .2s ease}
 .ht-back-btn:hover{gap:2px}
 .ht-breadcrumb-sep{font-size:13px;color:#d9d9de}
 .ht-breadcrumb-label{font-size:13px;color:#8d8d9c}
 .ht-breadcrumb-current{font-size:13px;color:#1a0a0a;font-weight:600}
-.ht-hero{background:#fff;padding:72px 0 80px;position:relative;overflow:hidden}
+.ht-hero{background:#fff;padding:56px 0 80px;position:relative;overflow:hidden}
 .ht-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 700px 500px at 100% 50%,rgba(236,10,29,.06) 0%,transparent 60%),radial-gradient(ellipse 500px 400px at 0% 80%,rgba(255,45,61,.04) 0%,transparent 55%);pointer-events:none}
 .ht-hero__inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:72px;align-items:center;position:relative;z-index:1}
 .ht-hero__title{font-family:var(--font-display);font-size:clamp(26px,3.5vw,44px);font-weight:700;color:#1a0a0a;line-height:1.1;margin-bottom:18px}
@@ -2604,7 +2604,7 @@ input, textarea { font-family: inherit; }
 /* SKIN TREATMENT DETAIL PAGE */
 .st-page{font-family:'Poppins',system-ui,-apple-system,sans-serif}
 /* breadcrumb */
-.st-breadcrumb{background:#fff;border-bottom:1px solid #f0e0e2;padding:14px 0}
+.st-breadcrumb{background:#fafbfc;border-bottom:1px solid #f0e0e2;padding:14px 0;margin-top:72px}
 .st-breadcrumb .container{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .st-back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#ec0a1d;background:none;border:none;cursor:pointer;padding:0;transition:gap .2s}
 .st-back-btn:hover{gap:2px}
@@ -2612,7 +2612,7 @@ input, textarea { font-family: inherit; }
 .st-breadcrumb-label{font-size:12.5px;color:#9d9dae}
 .st-breadcrumb-current{font-size:12.5px;font-weight:600;color:#3a3a45}
 /* hero */
-.st-hero{background:#fff;padding:80px 0 0;border-bottom:1px solid #f0e8e8;overflow:hidden}
+.st-hero{background:#fff;padding:56px 0 0;border-bottom:1px solid #f0e8e8;overflow:hidden}
 .st-hero__inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding-bottom:80px}
 .st-hero__eyebrow-wrap{margin-bottom:12px}
 .st-hero__eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#ec0a1d;background:#fff5f5;border:1px solid #ffc8cc;border-radius:9999px;padding:5px 16px}
