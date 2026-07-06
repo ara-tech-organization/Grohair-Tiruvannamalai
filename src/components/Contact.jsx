@@ -1,8 +1,96 @@
-import { MapPin, Phone, Mail, Clock, Send, ChevronRight } from 'lucide-react'
+import { useState, useRef, useEffect } from 'react'
+import { MapPin, Phone, Mail, Clock, Send, ChevronRight, ChevronDown } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+
+const SERVICES = [
+  'Hybrid Hair Transplant',
+  'G Cell Therapy',
+  'Regen Pro 9 GFC',
+  'Advanced Gel PRP',
+  'PRP Pro+ StemX27',
+  'Oxygen Laser Therapy',
+  'Cosmetic Hair System',
+  'Beard Transplant',
+  'Glutalite IV Drip',
+  'Chemical Peel',
+  'Photo Carbon Skin Polish',
+  'Laser Hair Reduction',
+  'Hydra Lift Skin Booster',
+  'Lip Micropigmentation',
+  'Botox & Fillers',
+  'MNRF Treatment',
+  'Tattoo Removal',
+  'Other / General Inquiry',
+]
+
+const API_URL = 'https://adgrohairgloskintiruvannamalai.com/api/email.php'
+
+function defaultDate() {
+  const d = new Date()
+  return d.toISOString().slice(0, 10)
+}
+
+function defaultTime() {
+  const d = new Date()
+  d.setHours(d.getHours() + 1, 0, 0, 0)
+  return `${String(d.getHours()).padStart(2, '0')}:00`
+}
+
+function to12Hour(time24) {
+  if (!time24) return ''
+  const [h, m] = time24.split(':').map(Number)
+  const period = h >= 12 ? 'PM' : 'AM'
+  const hour12 = h % 12 === 0 ? 12 : h % 12
+  return `${hour12}:${String(m).padStart(2, '0')} ${period}`
+}
 
 export default function Contact({ navigate }) {
   useScrollReveal()
+  const [service, setService] = useState('')
+  const [dropOpen, setDropOpen] = useState(false)
+  const [date, setDate] = useState(defaultDate)
+  const [time, setTime] = useState(defaultTime)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
+  const dropRef = useRef(null)
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (dropRef.current && !dropRef.current.contains(e.target)) setDropOpen(false)
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setError('')
+    const data = new FormData(e.target)
+    const payload = {
+      name: data.get('name'),
+      email: data.get('email'),
+      phone: data.get('phone'),
+      date,
+      time: to12Hour(time),
+      treatment: service || 'General Inquiry',
+      message: data.get('message'),
+      source: 'Website Form',
+    }
+    setSubmitting(true)
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      navigate('thankyou')
+    } catch (err) {
+      setError('Something went wrong sending your request. Please try again or call us directly.')
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   return (
     <main>
@@ -101,7 +189,7 @@ export default function Contact({ navigate }) {
                 <p className="cq-form-sub">Fill in your details and we'll get back to you within a few hours.</p>
               </div>
 
-              <form className="cq-form">
+              <form className="cq-form" onSubmit={handleSubmit}>
                 <div className="cq-form-row">
                   <div className="cq-field">
                     <input className="cq-input" name="name" placeholder=" " required />
@@ -115,34 +203,49 @@ export default function Contact({ navigate }) {
                   </div>
                 </div>
                 <div className="cq-field">
-                  <input className="cq-input" name="phone" placeholder=" " />
+                  <input className="cq-input" type="tel" name="phone" placeholder=" " required />
                   <label className="cq-label">Phone number</label>
                   <span className="cq-line" />
                 </div>
-                <div className="cq-field cq-field--select">
-                  <select className="cq-input cq-select" name="service" defaultValue="">
-                    <option value="" disabled> </option>
-                    <option>Hair Transplant</option>
-                    <option>Mesotherapy</option>
-                    <option>PRP Therapy</option>
-                    <option>Stem X 27</option>
-                    <option>HydraFacial</option>
-                    <option>Q-Switch Laser</option>
-                    <option>Skin Peels</option>
-                    <option>Cosmelan Peel</option>
-                    <option>Other / General inquiry</option>
-                  </select>
-                  <label className="cq-label">Treatment interest</label>
+                <div className="cq-field cq-field--select" ref={dropRef}>
+                  <input type="hidden" name="service" value={service} />
+                  <div
+                    className={`cq-input cq-drop-trigger${dropOpen ? ' cq-drop-trigger--open' : ''}`}
+                    onClick={() => setDropOpen(o => !o)}
+                    tabIndex={0}
+                    onKeyDown={e => e.key === 'Enter' && setDropOpen(o => !o)}
+                  >
+                    <span className={service ? 'cq-drop-value' : 'cq-drop-placeholder'}>{service || ''}</span>
+                    <ChevronDown size={16} className={`cq-drop-chevron${dropOpen ? ' cq-drop-chevron--open' : ''}`} />
+                  </div>
+                  <label className={`cq-label${service ? ' cq-label--active' : ''}`}>Treatment interest</label>
                   <span className="cq-line" />
+                  {dropOpen && (
+                    <ul className="cq-drop-list">
+                      {SERVICES.map(s => (
+                        <li
+                          key={s}
+                          className={`cq-drop-item${service === s ? ' cq-drop-item--selected' : ''}`}
+                          onClick={() => { setService(s); setDropOpen(false) }}
+                        >
+                          {s}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
                 <div className="cq-field">
                   <textarea className="cq-input cq-textarea" name="message" placeholder=" " required />
                   <label className="cq-label">Your message</label>
                   <span className="cq-line" />
                 </div>
-                <p className="cq-note">By submitting, you agree to our privacy practices.</p>
-                <button type="submit" className="cq-submit">
-                  <Send size={16} /> Send Message
+                {error && <p className="cq-note" style={{ color: '#ec0a1d' }}>{error}</p>}
+                <p className="cq-note">
+                  By submitting, you agree to our{' '}
+                  <button type="button" className="cq-note-link" onClick={() => navigate('privacy')}>privacy practices</button>.
+                </p>
+                <button type="submit" className="cq-submit" disabled={submitting}>
+                  <Send size={16} /> {submitting ? 'Sending…' : 'Send Message'}
                 </button>
               </form>
             </div>

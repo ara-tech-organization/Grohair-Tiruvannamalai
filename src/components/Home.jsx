@@ -5,14 +5,14 @@ import {
 } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
-import heroBg         from '../assets/treatments/hybrid-hair-transplant.jpg'
+import heroBg         from '../assets/hero.png'
 import skinPeelsImg   from '../assets/treatments/chemical-peel.jpg'
 import qswitchImg     from '../assets/treatments/photo-carbon.png'
 import hydrafacialImg from '../assets/treatments/hydra-lift.jpg'
 import hairTxImg      from '../assets/treatments/hybrid-hair-transplant.jpg'
 import mesoImg        from '../assets/treatments/gcell.jpg'
 import stemXImg       from '../assets/treatments/prp-stemx27.png'
-import prpImg         from '../assets/treatments/gel-prp.jpg'
+import prpImg         from '../assets/treatments/advancedgelprp.png'
 
 const FEATURES = [
   {
@@ -173,45 +173,47 @@ export default function Home({ navigate }) {
 
       {/* ── HERO ── */}
       <section className="hero">
-        <div className="hero__bg" style={{ backgroundImage: `url(${heroBg})` }} />
-        <div className="hero__overlay" />
-        <div className="hero__orb1" aria-hidden="true" />
-        <div className="hero__orb2" aria-hidden="true" />
-        <div className="hero__spotlight" aria-hidden="true" />
+        <div className="hero__bg-img" style={{ backgroundImage: `url(${heroBg})` }} aria-hidden="true" />
+        <div className="hero__bg-overlay" aria-hidden="true" />
+        <div className="hero__dots" aria-hidden="true" />
+        <div className="hero__ring1" aria-hidden="true" />
+        <div className="hero__ring2" aria-hidden="true" />
+        <div className="hero__ring3" aria-hidden="true" />
         <div className="container">
           <div className="hero__content">
-            <div className="hero__badge">
-              <Star size={12} fill="currentColor" /> Now in Tiruvannamalai
+            <div className="hero__pill">
+              <Star size={11} fill="currentColor" />
+              Tiruvannamalai's Premier Clinic
             </div>
             <h1 className="hero__title">
-              Hair &amp; Skin Wellness<br />
-              in <span>Tiruvannamalai</span>
+              Expert Hair &amp; Skin<br />
+              Care in <span>Tiruvannamalai</span>
             </h1>
             <p className="hero__sub">
-              Advanced GroHair and GloSkin proudly bring expert care in hair restoration
-              and skin health to Tiruvannamalai. Our certified trichologists and skincare
-              professionals deliver customized treatments focused on effective, lasting results.
+              Certified trichologists and skincare professionals delivering
+              advanced, personalised treatments — from hair restoration to
+              skin wellness — focused on lasting, visible results.
             </p>
             <div className="hero__actions">
-              <button className="btn btn-gold" onClick={() => navigate('contact')}>
+              <button className="btn btn-gold" onClick={() => navigate('booking')}>
                 Book Appointment
               </button>
-              <button className="btn btn-outline" onClick={() => navigate('services')}>
+              <button className="btn btn-outline-dark" onClick={() => navigate('services')}>
                 Explore Treatments <ChevronRight size={15} />
               </button>
             </div>
             <div className="hero__trust">
               <div className="hero__trust-item">
-                <div className="hero__trust-icon"><Stethoscope size={16} /></div>
+                <div className="hero__trust-icon"><Stethoscope size={15} /></div>
                 <span>Certified specialists</span>
               </div>
               <div className="hero__trust-item">
-                <div className="hero__trust-icon"><Shield size={16} /></div>
-                <span>Sterile, premium setting</span>
+                <div className="hero__trust-icon"><Shield size={15} /></div>
+                <span>Sterile premium setting</span>
               </div>
               <div className="hero__trust-item">
-                <div className="hero__trust-icon"><Award size={16} /></div>
-                <span>Personalized plans</span>
+                <div className="hero__trust-icon"><Award size={15} /></div>
+                <span>Personalised plans</span>
               </div>
             </div>
           </div>
@@ -545,7 +547,7 @@ export default function Home({ navigate }) {
               will design a plan tailored to your goals — gently, precisely, beautifully.
             </p>
             <div className="home-cta__actions">
-              <button className="btn btn-gold" onClick={() => navigate('contact')}>
+              <button className="btn btn-gold" onClick={() => navigate('booking')}>
                 Book Appointment
               </button>
               <button className="btn btn-secondary" onClick={() => navigate('contact')}>

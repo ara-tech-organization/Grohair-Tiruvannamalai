@@ -5,7 +5,9 @@ import Home                from './components/Home'
 import About               from './components/About'
 import Services            from './components/Services'
 import Contact             from './components/Contact'
+import BookAppointment     from './components/BookAppointment'
 import Privacy             from './components/Privacy'
+import ThankYou            from './components/ThankYou'
 import HairTreatmentDetail from './components/HairTreatmentDetail'
 import SkinTreatmentDetail from './components/SkinTreatmentDetail'
 import './styles/main.css'
@@ -17,7 +19,10 @@ function pageToUrl(id) {
   if (id === 'about')   return BASE + '/about'
   if (id === 'services') return BASE + '/Services'
   if (id === 'contact') return BASE + '/Contact'
+  if (id === 'booking') return BASE + '/book-appointment'
   if (id === 'privacy') return BASE + '/privacy'
+  if (id === 'terms')   return BASE + '/terms-and-conditions'
+  if (id === 'thankyou') return BASE + '/thank-you'
   if (id.startsWith('ht:')) return `${BASE}/Services/hair-treatment/${id.slice(3)}`
   if (id.startsWith('st:')) return `${BASE}/Skin-treatment/${id.slice(3)}`
   return null
@@ -28,7 +33,10 @@ function urlToPage(pathname) {
   if (path === '/' || path === '') return 'home'
   if (path === '/about') return 'about'
   if (path === '/Contact') return 'contact'
+  if (path === '/book-appointment') return 'booking'
   if (path === '/privacy') return 'privacy'
+  if (path === '/terms-and-conditions') return 'terms'
+  if (path === '/thank-you') return 'thankyou'
   if (path.startsWith('/Services/hair-treatment/')) {
     const slug = path.replace('/Services/hair-treatment/', '').replace(/\/$/, '')
     if (slug) return `ht:${slug}`
@@ -91,7 +99,11 @@ export default function App() {
         {page === 'about'    && <About    navigate={navigate} />}
         {page === 'services' && <Services navigate={navigate} />}
         {page === 'contact'  && <Contact  navigate={navigate} />}
-        {page === 'privacy'  && <Privacy  navigate={navigate} />}
+        {page === 'booking'  && <BookAppointment navigate={navigate} />}
+        {(page === 'privacy' || page === 'terms') && (
+          <Privacy navigate={navigate} anchor={page === 'terms' ? 'terms-and-conditions' : 'privacy-policy'} />
+        )}
+        {page === 'thankyou' && <ThankYou navigate={navigate} />}
         {isHairDetail        && <HairTreatmentDetail slug={hairSlug} navigate={navigate} />}
         {isSkinDetail        && <SkinTreatmentDetail slug={skinSlug} navigate={navigate} />}
       </div>

@@ -181,7 +181,7 @@ export default function About({ navigate }) {
             </div>
 
             <div className="ab4-hero__actions">
-              <button className="btn btn-primary" onClick={() => navigate('contact')}>Book Appointment</button>
+              <button className="btn btn-primary" onClick={() => navigate('booking')}>Book Appointment</button>
               <button className="btn btn-secondary" onClick={() => navigate('services')}>Our Treatments</button>
             </div>
 
@@ -422,7 +422,7 @@ export default function About({ navigate }) {
               Book a private consultation with our<br />specialists at our Tiruvannamalai clinic.
             </h2>
             <div className="home-cta__actions" style={{ marginTop: 36 }}>
-              <button className="btn btn-gold" onClick={() => navigate('contact')}>
+              <button className="btn btn-gold" onClick={() => navigate('booking')}>
                 Book Appointment
               </button>
               <button className="btn btn-secondary" onClick={() => navigate('services')}>

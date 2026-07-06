@@ -48,13 +48,13 @@ export default function Navbar({ activePage, navigate }) {
                   {l.label}
                 </button>
               ))}
-              <button className="nav-mobile-cta btn btn-primary" onClick={() => go('contact')}>
+              <button className="nav-mobile-cta btn btn-primary" onClick={() => go('booking')}>
                 Book Appointment
               </button>
             </div>
 
             <div className="navbar__cta">
-              <button className="btn btn-primary" onClick={() => go('contact')}>
+              <button className="btn btn-primary" onClick={() => go('booking')}>
                 Book Appointment
               </button>
             </div>

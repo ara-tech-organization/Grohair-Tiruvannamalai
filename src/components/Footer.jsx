@@ -9,7 +9,7 @@ const SERVICES = [
 
 const GOOGLE_MAPS = 'https://www.google.com/maps?q=Second+Floor,+No.1551,+Vellore+Thoothukudi+Hwy,+above+Reliance+Digital,+Thendral+Nagar,+Vengikkal,+Tiruvannamalai,+Tamil+Nadu+606604'
 const INSTAGRAM   = 'https://www.instagram.com/adgrohairgloskintiruvannamalai/reels/'
-const FACEBOOK    = 'https://www.facebook.com/'
+const FACEBOOK    = 'https://www.facebook.com/people/AdGro-Hair-Clinic-Tiruvannamalai/61575753012087/'
 const WHATSAPP    = 'https://wa.me/917599056789'
 
 export default function Footer({ navigate }) {
@@ -29,10 +29,6 @@ export default function Footer({ navigate }) {
               specialists, calm spaces, and advanced treatments — all designed around
               how care should actually feel.
             </p>
-            <div className="footer__badges">
-              <span className="footer__badge">GloSkin</span>
-              <span className="footer__badge">GroHair</span>
-            </div>
             {/* Social icons */}
             <div className="footer__socials">
               <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="footer__social" aria-label="Instagram">
@@ -64,7 +60,7 @@ export default function Footer({ navigate }) {
                   {p.charAt(0).toUpperCase() + p.slice(1)}
                 </button>
               ))}
-              <button className="footer__link" onClick={() => navigate('contact')}>
+              <button className="footer__link" onClick={() => navigate('booking')}>
                 Book appointment
               </button>
             </div>
@@ -111,10 +107,13 @@ export default function Footer({ navigate }) {
           <div className="footer__legal">
             <button className="footer__legal-btn" onClick={() => navigate('privacy')}>Privacy Policy</button>
             <span>&nbsp;|&nbsp;</span>
-            <button className="footer__legal-btn" onClick={() => { navigate('privacy'); setTimeout(() => { const el = document.getElementById('terms-and-conditions'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 400); }}>Terms &amp; Conditions</button>
+            <button className="footer__legal-btn" onClick={() => navigate('terms')}>Terms &amp; Conditions</button>
           </div>
           <p className="footer__credit">
-            Crafted by <a href="#">ARA Discoveries</a>
+            <span className="footer__credit-heart">&#10084;</span> Crafted by{' '}
+            <a href="https://discovertechnologies.co/" target="_blank" rel="noopener noreferrer">
+              Ara Discover Technology
+            </a>
           </p>
         </div>
       </div>

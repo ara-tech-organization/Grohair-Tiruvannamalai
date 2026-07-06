@@ -3,14 +3,14 @@ import { ChevronRight, ShieldCheck, FileText } from 'lucide-react'
 
 const CLINIC = 'Advanced GroHair & GloSkin — Tiruvannamalai'
 
-export default function Privacy({ navigate }) {
+export default function Privacy({ navigate, anchor }) {
   useEffect(() => {
-    const hash = window.location.hash
-    if (hash) {
-      const el = document.querySelector(hash)
-      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    const id = anchor || window.location.hash.replace('#', '')
+    if (id) {
+      const el = document.getElementById(id)
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
-  }, [])
+  }, [anchor])
 
   return (
     <main className="legal-page">

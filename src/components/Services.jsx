@@ -4,11 +4,10 @@ import { useState, useEffect } from 'react'
 
 const BASE = '/Grohair-Tiruvannamalai'
 
-import glutaHairImg   from '../assets/treatments/glutathione-hair.jpg'
 import gcellImg       from '../assets/treatments/gcell.jpg'
 import hairTxImg      from '../assets/treatments/hybrid-hair-transplant.jpg'
 import regenImg       from '../assets/treatments/regen-pro9-new.png'
-import prpImg         from '../assets/treatments/gel-prp.jpg'
+import prpImg         from '../assets/treatments/advancedgelprp.png'
 import oltImg         from '../assets/treatments/olt-new.png'
 import capImg         from '../assets/treatments/cosmetic-hair-system.png'
 import prpStemImg     from '../assets/treatments/prp-stemx27.png'
@@ -25,12 +24,6 @@ import mnrfImg        from '../assets/treatments/mnrf.jpg'
 import wartImg        from '../assets/treatments/tattoo-removal.jpg'
 
 const HAIR = [
-  {
-    slug: 'glutathione',
-    img: glutaHairImg,
-    title: 'Glutathione IV Drip Therapy',
-    desc: 'Advanced wellness and skin rejuvenation treatment delivering the body\'s "Master Antioxidant" directly into the bloodstream for maximum absorption, enhanced glow, and detoxification support.',
-  },
   {
     slug: 'gcell',
     img: gcellImg,
