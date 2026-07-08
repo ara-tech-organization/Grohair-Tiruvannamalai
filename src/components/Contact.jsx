@@ -25,15 +25,14 @@ const SERVICES = [
 
 const API_URL = 'https://adgrohairgloskintiruvannamalai.com/api/email.php'
 
-function defaultDate() {
+function currentDate() {
   const d = new Date()
   return d.toISOString().slice(0, 10)
 }
 
-function defaultTime() {
+function currentTime() {
   const d = new Date()
-  d.setHours(d.getHours() + 1, 0, 0, 0)
-  return `${String(d.getHours()).padStart(2, '0')}:00`
+  return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`
 }
 
 function to12Hour(time24) {
@@ -48,8 +47,6 @@ export default function Contact({ navigate }) {
   useScrollReveal()
   const [service, setService] = useState('')
   const [dropOpen, setDropOpen] = useState(false)
-  const [date, setDate] = useState(defaultDate)
-  const [time, setTime] = useState(defaultTime)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
   const dropRef = useRef(null)
@@ -70,8 +67,8 @@ export default function Contact({ navigate }) {
       name: data.get('name'),
       email: data.get('email'),
       phone: data.get('phone'),
-      date,
-      time: to12Hour(time),
+      date: currentDate(),
+      time: to12Hour(currentTime()),
       treatment: service || 'General Inquiry',
       message: data.get('message'),
       source: 'Website Form',

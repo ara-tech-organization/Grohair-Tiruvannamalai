@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Send, ChevronDown, Clock, Sparkles, ShieldCheck, CheckCircle2 } from 'lucide-react'
+import { Send, ChevronDown, Sparkles, ShieldCheck, CheckCircle2 } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const SERVICES = [
@@ -23,11 +23,6 @@ const SERVICES = [
   'Other / General Inquiry',
 ]
 
-const TIME_SLOTS = [
-  '10:00', '10:45', '11:30', '12:15',
-  '14:00', '14:45', '15:30', '16:15', '17:00', '17:45',
-]
-
 const API_URL = 'https://adgrohairgloskintiruvannamalai.com/api/email.php'
 
 function todayISO() {
@@ -38,6 +33,14 @@ function formatDate(iso) {
   if (!iso) return ''
   const d = new Date(iso)
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })
+}
+
+function to12Hour(time24) {
+  if (!time24) return ''
+  const [h, m] = time24.split(':').map(Number)
+  const period = h >= 12 ? 'PM' : 'AM'
+  const hour12 = h % 12 === 0 ? 12 : h % 12
+  return `${hour12}:${String(m).padStart(2, '0')} ${period}`
 }
 
 export default function BookAppointment({ navigate }) {
@@ -72,7 +75,7 @@ export default function BookAppointment({ navigate }) {
       email: data.get('email'),
       phone: data.get('phone'),
       date,
-      time,
+      time: to12Hour(time),
       treatment: service,
       message: data.get('message'),
       source: 'Book Appointment Page',
@@ -145,67 +148,67 @@ export default function BookAppointment({ navigate }) {
                     <span className="cq-line" />
                   </div>
                 </div>
-                <div className="cq-field">
-                  <input className="cq-input" type="tel" name="phone" placeholder=" " required />
-                  <label className="cq-label">Phone number</label>
-                  <span className="cq-line" />
-                </div>
-
-                <div className="cq-field cq-field--select" ref={dropRef}>
-                  <input type="hidden" name="service" value={service} required />
-                  <div
-                    className={`cq-input cq-drop-trigger${dropOpen ? ' cq-drop-trigger--open' : ''}`}
-                    onClick={() => setDropOpen(o => !o)}
-                    tabIndex={0}
-                    onKeyDown={e => e.key === 'Enter' && setDropOpen(o => !o)}
-                  >
-                    <span className={service ? 'cq-drop-value' : 'cq-drop-placeholder'}>{service || ''}</span>
-                    <ChevronDown size={16} className={`cq-drop-chevron${dropOpen ? ' cq-drop-chevron--open' : ''}`} />
+                <div className="cq-form-row">
+                  <div className="cq-field">
+                    <input className="cq-input" type="tel" name="phone" placeholder=" " required />
+                    <label className="cq-label">Phone number</label>
+                    <span className="cq-line" />
                   </div>
-                  <label className={`cq-label${service ? ' cq-label--active' : ''}`}>Treatment</label>
-                  <span className="cq-line" />
-                  {dropOpen && (
-                    <ul className="cq-drop-list">
-                      {SERVICES.map(s => (
-                        <li
-                          key={s}
-                          className={`cq-drop-item${service === s ? ' cq-drop-item--selected' : ''}`}
-                          onClick={() => { setService(s); setDropOpen(false) }}
-                        >
-                          {s}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+
+                  <div className="cq-field cq-field--select" ref={dropRef}>
+                    <input type="hidden" name="service" value={service} required />
+                    <div
+                      className={`cq-input cq-drop-trigger${dropOpen ? ' cq-drop-trigger--open' : ''}`}
+                      onClick={() => setDropOpen(o => !o)}
+                      tabIndex={0}
+                      onKeyDown={e => e.key === 'Enter' && setDropOpen(o => !o)}
+                    >
+                      <span className={service ? 'cq-drop-value' : 'cq-drop-placeholder'}>{service || ''}</span>
+                      <ChevronDown size={16} className={`cq-drop-chevron${dropOpen ? ' cq-drop-chevron--open' : ''}`} />
+                    </div>
+                    <label className={`cq-label${service ? ' cq-label--active' : ''}`}>Treatment</label>
+                    <span className="cq-line" />
+                    {dropOpen && (
+                      <ul className="cq-drop-list">
+                        {SERVICES.map(s => (
+                          <li
+                            key={s}
+                            className={`cq-drop-item${service === s ? ' cq-drop-item--selected' : ''}`}
+                            onClick={() => { setService(s); setDropOpen(false) }}
+                          >
+                            {s}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 </div>
 
-                <div className="cq-field">
-                  <input
-                    className="cq-input"
-                    type="date"
-                    name="date"
-                    min={todayISO()}
-                    value={date}
-                    onChange={e => setDate(e.target.value)}
-                    required
-                  />
-                  <label className="cq-label cq-label--active">Preferred date</label>
-                  <span className="cq-line" />
-                </div>
-
-                <div className="ba-slots-field">
-                  <label className="ba-slots-label">Time slot</label>
-                  <div className="ba-slots">
-                    {TIME_SLOTS.map(slot => (
-                      <button
-                        key={slot}
-                        type="button"
-                        className={`ba-slot${time === slot ? ' ba-slot--active' : ''}`}
-                        onClick={() => setTime(slot)}
-                      >
-                        <Clock size={13} /> {slot}
-                      </button>
-                    ))}
+                <div className="cq-form-row">
+                  <div className="cq-field">
+                    <input
+                      className="cq-input"
+                      type="date"
+                      name="date"
+                      min={todayISO()}
+                      value={date}
+                      onChange={e => setDate(e.target.value)}
+                      required
+                    />
+                    <label className="cq-label cq-label--active">Preferred date</label>
+                    <span className="cq-line" />
+                  </div>
+                  <div className="cq-field">
+                    <input
+                      className="cq-input"
+                      type="time"
+                      name="time"
+                      value={time}
+                      onChange={e => setTime(e.target.value)}
+                      required
+                    />
+                    <label className="cq-label cq-label--active">Preferred time</label>
+                    <span className="cq-line" />
                   </div>
                 </div>
 
@@ -239,7 +242,7 @@ export default function BookAppointment({ navigate }) {
                   <li className="ba-summary-row"><span>Name</span><strong>{name || '—'}</strong></li>
                   <li className="ba-summary-row"><span>Treatment</span><strong>{service || '—'}</strong></li>
                   <li className="ba-summary-row"><span>Date</span><strong>{date ? formatDate(date) : '—'}</strong></li>
-                  <li className="ba-summary-row"><span>Time</span><strong>{time || '—'}</strong></li>
+                  <li className="ba-summary-row"><span>Time</span><strong>{time ? to12Hour(time) : '—'}</strong></li>
                 </ul>
               </div>
 
