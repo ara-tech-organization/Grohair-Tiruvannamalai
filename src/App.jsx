@@ -12,7 +12,7 @@ import HairTreatmentDetail from './components/HairTreatmentDetail'
 import SkinTreatmentDetail from './components/SkinTreatmentDetail'
 import './styles/main.css'
 
-const BASE = '/Grohair-Tiruvannamalai'
+const BASE = ''
 
 function pageToUrl(id) {
   if (id === 'home')    return BASE + '/'

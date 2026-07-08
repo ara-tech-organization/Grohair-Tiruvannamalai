@@ -2,7 +2,7 @@ import { Scissors, Sparkles, ArrowRight, Check } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useState, useEffect } from 'react'
 
-const BASE = '/Grohair-Tiruvannamalai'
+const BASE = ''
 
 import gcellImg       from '../assets/treatments/gcell.jpg'
 import hairTxImg      from '../assets/treatments/hybrid-hair-transplant.jpg'
